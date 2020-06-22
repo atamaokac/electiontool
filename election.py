@@ -16,8 +16,7 @@ def election(votes, message=True, force_forward=False):
         accum = [0]
         for ob in obtained[::-1]:
             accum.append(accum[-1] + ob[1])
-        accum = accum[::-1]
-        accum.pop()
+        accum = accum[:0:-1]
         candidates = {top[0]}
         for m in range(1,M):
             if accum[m] < obtained[m-1][1]:
