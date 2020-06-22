@@ -17,7 +17,6 @@ while True:
         votes.append(v)
     except EOFError:
         break
-N = len(votes)
 
 ballots = []
 for v in votes:
