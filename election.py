@@ -7,9 +7,12 @@ def election(votes, message=True, force_forward=False):
     votes = deepcopy(votes)
     N = len(votes)
     for i in range(N):
-        obtained = Counter([v[-1] for v in votes if len(votes)]).most_common()
+        obtained = Counter([v[-1] for v in votes if len(v)]).most_common()
         M = len(obtained)
         top = obtained[0]
+        if M == 1:
+            return top[0]
+
         accum = [0]
         for ob in obtained[::-1]:
             accum.append(accum[-1] + ob[1])
@@ -29,14 +32,18 @@ def election(votes, message=True, force_forward=False):
         if m == 1:
             return top[0]
         elif m >= M:
+            if message:
+                print('  All the candidates survived.')
             if force_forward:
                 l = M-2
                 while l >= 0 and obtained[l][1] == obtained[-1][1]:
                     l -= 1
                 candidates |= {obtained[i][0] for i in range(l+1,M)}
-                candidates.discard(obtained[randrange(l+1,M)][0])
+                drop = obtained[randrange(l+1,M)][0]
+                candidates.discard(drop)
+                if message:
+                    print('  Drop the candidate {}.'.format(drop))
             elif message:
-                print('  All the candidates survived.')
                 print('  Final winner was not determined.')
                 return None
         elif message:
