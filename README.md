@@ -28,8 +28,8 @@ pipでインストールすることができます。
 $ python election.py < votes.txt
 ```
 
-入力ファイルの例 (`votes.txt`)
-
+## Example
+### 入力ファイルの例 (`votes.txt`)
 ```
 ABC
 EDBACFG
@@ -52,7 +52,8 @@ DBCA
 DBA
 ```
 
-実行結果 (`election.py` の場合)
+### 実行結果
+#### `election.py` の場合
 ```
 The 1-th vote: [('D', 9), ('B', 5), ('C', 2), ('A', 1), ('E', 1), ('F', 1)]
   Candidates ['D', 'B', 'C'] survived.
@@ -61,7 +62,7 @@ The 2-th vote: [('D', 10), ('B', 7), ('C', 2)]
 The candidate 'D' is the Final Winner !!!
 ```
 
-実行結果 (`election_schulze.py` の場合)
+#### `election_schulze.py` の場合
 ```
 candidates: {'G', 'D', 'F', 'C', 'A', 'E', 'B'}
 winner: D
