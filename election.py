@@ -32,20 +32,34 @@ def election(votes, message=True, force_forward=False):
         if m == 1:
             return top[0]
         elif m >= M:
-            if message:
-                print('  All the candidates survived.')
-            if force_forward:
-                l = M-2
-                while l >= 0 and obtained[l][1] == obtained[-1][1]:
-                    l -= 1
-                candidates |= {obtained[i][0] for i in range(l+1,M)}
-                drop = obtained[randrange(l+1,M)][0]
-                candidates.discard(drop)
+            l = M-2
+            while l >= 0 and obtained[l][1] == obtained[-1][1]:
+                l -= 1
+            candidates = {obtained[i][0] for i in range(l+1)}
+            fighting = {obtained[i][0] for i in range(l+1,M)}
+            losers = set()
+            for f in fighting:
+                tmp_votes = deepcopy(votes)
+                tmp_candidates = candidates | {f}
+                for n in range(N):
+                    while len(tmp_votes[n]) > 0 and not tmp_votes[n][-1] in tmp_candidates:
+                        tmp_votes[n].pop()
+                tmp_result = election(tmp_votes, message=False)
+                if tmp_result != f and not (isinstance(tmp_result,list) and f in dict(tmp_result)):
+                    losers.add(f)
+            candidates |= fighting
+            candidates -= losers
+            if not losers:
                 if message:
-                    print('  Drop the candidate \'{}\'.'.format(drop))
-            elif message:
-                print('  Final winner was not determined.')
-                return None
+                    print('  All the candidates survived.')
+                if force_forward:
+                    drop = obtained[randrange(l+1,M)][0]
+                    candidates.discard(drop)
+                    if message:
+                        print('  Drop the candidate \'{}\'.'.format(drop))
+                elif message:
+                    print('  Final winner was not determined.')
+                    return obtained
         elif message:
             print('  Candidates {} survived.'.format([ obtained[j][0] for j in range(m)]))
         
@@ -69,7 +83,9 @@ if __name__ == '__main__':
 
     if K == 0:
         winner = election(votes)
-        if winner:
+        if isinstance(winner, list):
+            print('  The candidates \'{}\' are still surviving.'.format(winner))
+        else:
             print('  The candidate \'{}\' is the Final Winner !!'.format(winner))
     else:
         win_times = defaultdict(int)
