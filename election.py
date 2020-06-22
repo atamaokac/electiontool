@@ -48,7 +48,9 @@ def election(votes, message=True, force_forward=False):
                     losers.add(f)
             candidates |= fighting
             candidates -= losers
-            if not losers:
+            if losers:
+                print('  Candidates {} survived.'.format([ obtained[j][0] for j in range(m) if obtained[j][0] in candidates]))            
+            else:
                 if message:
                     print('  All the candidates survived.')
                 if force_forward:
@@ -83,9 +85,9 @@ if __name__ == '__main__':
     if K == 0:
         winner = election(votes)
         if isinstance(winner, list):
-            print('  The candidates \'{}\' are still surviving.'.format(winner))
+            print('The candidates \'{}\' are still surviving.'.format(winner))
         else:
-            print('  The candidate \'{}\' is the Final Winner !!'.format(winner))
+            print('The candidate \'{}\' is the Final Winner !!'.format(winner))
     else:
         win_times = defaultdict(int)
         for _ in range(K):
@@ -93,7 +95,7 @@ if __name__ == '__main__':
         result = list(win_times.items())
         if len(result) == 1:
             winner = result[0][0]
-            print('  The candidate \'{}\' is the Final Winner !!'.format(winner))        
+            print('The candidate \'{}\' is the Final Winner !!'.format(winner))        
         else:
-            print('  Final winner was not determined.')
-            print('  The winner distribution is: {}'.format(dict(win_times)))
+            print('Final winner was not determined.')
+            print('The winner distribution is: {}'.format(dict(win_times)))
