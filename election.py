@@ -89,7 +89,7 @@ if __name__ == '__main__':
         if isinstance(winner, list):
             print('The candidates \'{}\' are still surviving.'.format(winner))
         else:
-            print('The candidate \'{}\' is the Final Winner !!'.format(winner))
+            print('The candidate \'{}\' is the Final Winner !!!'.format(winner))
     else:
         win_times = defaultdict(int)
         for _ in range(K):
