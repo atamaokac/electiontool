@@ -49,7 +49,8 @@ def election(votes, message=True, force_forward=False):
             candidates |= fighting
             candidates -= losers
             if losers:
-                print('  Candidates {} survived.'.format([ obtained[j][0] for j in range(m) if obtained[j][0] in candidates]))            
+                if message:
+                    print('  Candidates {} survived.'.format([ obtained[j][0] for j in range(m) if obtained[j][0] in candidates]))            
             else:
                 if message:
                     print('  All the candidates survived.')
@@ -84,6 +85,7 @@ if __name__ == '__main__':
 
     if K == 0:
         winner = election(votes)
+        print('---')
         if isinstance(winner, list):
             print('The candidates \'{}\' are still surviving.'.format(winner))
         else:
