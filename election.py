@@ -42,7 +42,7 @@ def election(votes, message=True, force_forward=False):
                 drop = obtained[randrange(l+1,M)][0]
                 candidates.discard(drop)
                 if message:
-                    print('  Drop the candidate {}.'.format(drop))
+                    print('  Drop the candidate \'{}\'.'.format(drop))
             elif message:
                 print('  Final winner was not determined.')
                 return None
