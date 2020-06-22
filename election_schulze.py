@@ -29,4 +29,8 @@ for v in votes:
     d['ballot'] = order
     ballots.append(d)
 
-print(SchulzeMethod(ballots, ballot_notation = CondorcetHelper.BALLOT_NOTATION_GROUPING).as_dict())
+result = SchulzeMethod(ballots, ballot_notation = CondorcetHelper.BALLOT_NOTATION_GROUPING).as_dict()
+print(result)
+winner = result['winner']
+print('---')
+print('The candidate \'{}\' is the Final Winner !!!'.format(winner))
