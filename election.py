@@ -56,7 +56,7 @@ def election(votes, message=True, force_forward=False):
 if __name__ == '__main__':
     args = sys.argv
     if len(args) <= 1:
-        K = 1
+        K = 0
     else:
         K = int(args[1])
 
@@ -67,7 +67,7 @@ if __name__ == '__main__':
         except EOFError:
             break
 
-    if K == 1:
+    if K == 0:
         winner = election(votes)
         if winner:
             print('  The candidate \'{}\' is the Final Winner !!'.format(winner))
