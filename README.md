@@ -16,7 +16,7 @@ Schulze法による当選者決定を行います。
 こちらはパッケージ `python3-vote-core` のインストールが必要です。
 pipでインストールすることができます。
 
-##　Usage
+## Usage
 使い方は `election.py`, `election_schulze.py` どちらも同じです。
 
 1人の投票は、候補の記号を選好順に1以上の任意個数並べたものとします。  
