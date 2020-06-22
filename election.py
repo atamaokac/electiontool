@@ -75,4 +75,10 @@ if __name__ == '__main__':
         win_times = defaultdict(int)
         for _ in range(K):
             win_times[election(votes, message=False, force_forward=True)] += 1
-        print('  The winner distribution is: {}'.format(dict(win_times)))
+        result = win_times.items()
+        if len(result) == 1:
+            winner = result[0][0]
+            print('  The candidate \'{}\' is the Final Winner !!'.format(winner))        
+        else:
+            print('  Final winner was not determined.')
+            print('  The winner distribution is: {}'.format(dict(win_times)))
