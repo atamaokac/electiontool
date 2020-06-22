@@ -5,8 +5,6 @@ Schulze-method version
 Before using, you need to install py3votecore package, as:
 $ pip install python3-vote-core
 '''
-from collections import Counter, defaultdict
-import py3votecore
 from py3votecore.schulze_method import SchulzeMethod
 from py3votecore.condorcet import CondorcetHelper
 
