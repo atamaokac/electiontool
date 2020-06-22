@@ -75,7 +75,7 @@ if __name__ == '__main__':
         win_times = defaultdict(int)
         for _ in range(K):
             win_times[election(votes, message=False, force_forward=True)] += 1
-        result = win_times.items()
+        result = list(win_times.items())
         if len(result) == 1:
             winner = result[0][0]
             print('  The candidate \'{}\' is the Final Winner !!'.format(winner))        
