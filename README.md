@@ -34,43 +34,46 @@ $ python election.py < votes.txt
 ## Example
 ### 入力ファイルの例 (`votes.txt`)
 ```
-ABC
-EDBACFG
-CABD
-BFCGA
+BACD
+EBDACFG
+BCAD
+B
 FBDACG
 DBAC
-CBDAFEG
+BCAFDEG
 BC
 BCDAF
 DBACFEG
-DBACF
+BDACFE
 DFBEACG
 DABCFEG
 DBFACE
-BADFC
+DBA
 DACBF
 BFEDGAC
 DBCA
 DBA
+CDABFE
+BADE
+BDFA
 ```
 
 ### 実行結果
 #### `election.py` の場合
 ```
-The 1-th vote: [('D', 9), ('B', 5), ('C', 2), ('A', 1), ('E', 1), ('F', 1)]
-  Candidates ['D', 'B', 'C'] survived.
-The 2-th vote: [('D', 10), ('B', 7), ('C', 2)]
+The 1-th vote: [('B', 10), ('D', 9), ('E', 1), ('F', 1), ('C', 1)]
+  Candidates ['B', 'D'] survived.
+The 2-th vote: [('B', 12), ('D', 10)]
 ---
-The candidate 'D' is the Final Winner !!!
+The candidate 'B' is the Final Winner !!! 
 ```
 
 #### `election_schulze.py` の場合
 ```
-candidates: {'G', 'D', 'F', 'C', 'A', 'E', 'B'}
-winner: D
-pairs: {('G', 'D'): 1, ('G', 'F'): 0, ('G', 'C'): 1, ('G', 'A'): 2, ('G', 'E'): 2, ('G', 'B'): 0, ('D', 'G'): 16, ('D', 'F'): 14, ('D', 'C'): 13, ('D', 'A'): 14, ('D', 'E'): 14, ('D', 'B'): 10, ('F', 'G'): 13, ('F', 'D'): 3, ('F', 'C'): 6, ('F', 'A'): 5, ('F', 'E'): 12, ('F', 'B'): 2, ('C', 'G'): 17, ('C', 'D'): 6, ('C', 'F'): 12, ('C', 'A'): 6, ('C', 'E'): 15, ('C', 'B'): 3, ('A', 'G'): 16, ('A', 'D'): 4, ('A', 'F'): 13, ('A', 'C'): 13, ('A', 'E'): 15, ('A', 'B'): 4, ('E', 'G'): 7, ('E', 'D'): 2, ('E', 'F'): 1, ('E', 'C'): 3, ('E', 'A'): 3, ('E', 'B'): 1, ('B', 'G'): 19, ('B', 'D'): 9, ('B', 'F'): 17, ('B', 'C'): 16, ('B', 'A'): 15, ('B', 'E'): 18}
-strong_pairs: {('D', 'G'): 16, ('D', 'F'): 14, ('D', 'C'): 13, ('D', 'A'): 14, ('D', 'E'): 14, ('D', 'B'): 10, ('F', 'G'): 13, ('F', 'E'): 12, ('C', 'G'): 17, ('C', 'F'): 12, ('C', 'E'): 15, ('A', 'G'): 16, ('A', 'F'): 13, ('A', 'C'): 13, ('A', 'E'): 15, ('E', 'G'): 7, ('B', 'G'): 19, ('B', 'F'): 17, ('B', 'C'): 16, ('B', 'A'): 15, ('B', 'E'): 18}
+candidates: {'C', 'B', 'D', 'G', 'A', 'E', 'F'}
+winner: B
+pairs: {('C', 'B'): 2, ('C', 'D'): 6, ('C', 'G'): 16, ('C', 'A'): 6, ('C', 'E'): 14, ('C', 'F'): 13, ('B', 'C'): 20, ('B', 'D'): 12, ('B', 'G'): 22, ('B', 'A'): 19, ('B', 'E'): 21, ('B', 'F'): 20, ('D', 'C'): 15, ('D', 'B'): 10, ('D', 'G'): 20, ('D', 'A'): 16, ('D', 'E'): 18, ('D', 'F'): 17, ('G', 'C'): 1, ('G', 'B'): 0, ('G', 'D'): 0, ('G', 'A'): 1, ('G', 'E'): 1, ('G', 'F'): 0, ('A', 'C'): 15, ('A', 'B'): 3, ('A', 'D'): 4, ('A', 'G'): 19, ('A', 'E'): 17, ('A', 'F'): 15, ('E', 'C'): 4, ('E', 'B'): 1, ('E', 'D'): 2, ('E', 'G'): 10, ('E', 'A'): 3, ('E', 'F'): 2, ('F', 'C'): 5, ('F', 'B'): 2, ('F', 'D'): 3, ('F', 'G'): 13, ('F', 'A'): 5, ('F', 'E'): 12}
+strong_pairs: {('C', 'G'): 16, ('C', 'E'): 14, ('C', 'F'): 13, ('B', 'C'): 20, ('B', 'D'): 12, ('B', 'G'): 22, ('B', 'A'): 19, ('B', 'E'): 21, ('B', 'F'): 20, ('D', 'C'): 15, ('D', 'G'): 20, ('D', 'A'): 16, ('D', 'E'): 18, ('D', 'F'): 17, ('A', 'C'): 15, ('A', 'G'): 19, ('A', 'E'): 17, ('A', 'F'): 15, ('E', 'G'): 10, ('F', 'G'): 13, ('F', 'E'): 12}
 ---
-The candidate 'D' is the Final Winner !!!
+The candidate 'B' is the Final Winner !!!
 ```
